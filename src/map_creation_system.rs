@@ -14,11 +14,16 @@ fn setup(
     mut materials: ResMut<Assets<StandardMaterial>>
 ){
     let map = vec![
-        vec![0, 0, 1, 0, 0],
-        vec![0, 0, 1, 1, 0],
-        vec![0, 1, 1, 1, 0],
-        vec![0, 1, 1, 1, 1],
-        vec![1, 1, 1, 1, 1]];
+        vec![1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        vec![1, 0, 0, 1, 1, 0, 1, 0, 0, 1],
+        vec![1, 0, 1, 1, 0, 1, 1, 1, 0, 1],
+        vec![1, 1, 1, 0, 1, 1, 0, 1, 1, 1],
+        vec![1, 0, 1, 1, 1, 1, 1, 0, 1, 1],
+        vec![1, 1, 0, 1, 1, 1, 1, 1, 0, 1],
+        vec![1, 1, 1, 0, 1, 1, 0, 1, 1, 1],
+        vec![1, 0, 1, 1, 1, 0, 1, 1, 0, 1],
+        vec![1, 0, 0, 1, 0, 1, 1, 0, 0, 1],
+        vec![1, 1, 1, 1, 1, 1, 1, 1, 1, 1]];
     
     let mut x = 0.0;
     let mut y = 0.0;
@@ -29,9 +34,9 @@ fn setup(
                 continue;
             }
             commands.spawn_bundle(PbrBundle {
-                mesh: meshes.add(Mesh::from(shape::Cube { size: 1.0 })),
-                material: materials.add(Color::rgb(0.1, 0.6, 0.3).into()),
-                transform: Transform::from_xyz(x-3.0, 0.5, y-2.0),
+                mesh: meshes.add(Mesh::from(shape::Cube { size: 0.95 })),
+                material: materials.add(Color::rgb(0.1, 0.2, 0.7).into()),
+                transform: Transform::from_xyz(x-5.5, 0.5, y-4.5),
                 ..Default::default()
             });
         }
