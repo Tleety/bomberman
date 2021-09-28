@@ -47,4 +47,12 @@ fn setup(
         transform: Transform::from_xyz(3.0, 15.0, 5.0).looking_at(Vec3::ZERO, Vec3::Y),
         ..Default::default()
     });
+
+    //player
+    commands.spawn_bundle(PbrBundle {
+        mesh: meshes.add(Mesh::from(shape::Capsule{ radius: 0.5, ..Default::default()})),
+        material: materials.add(Color::rgb(41.0/256.0, 51.0/256.0, 92.0/256.0).into()),
+        transform: Transform::from_xyz(-3.5, 0.0, -3.5),
+        ..Default::default()
+    });
 }
