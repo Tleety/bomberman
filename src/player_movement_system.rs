@@ -11,7 +11,6 @@ impl Plugin for PlayerMovementPlugin {
 
 fn move_player(mut query: Query<&mut Transform, With<Player>>){
     for mut transform in query.iter_mut() {
-        println!("Moving!");
         transform.translation.x += 1.0;
     }
 }
