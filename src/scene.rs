@@ -1,4 +1,5 @@
 use bevy::prelude::*;
+use crate::player::Player;
 
 pub struct ScenePlugin;
 
@@ -54,5 +55,5 @@ fn setup(
         material: materials.add(Color::rgb(41.0/256.0, 51.0/256.0, 92.0/256.0).into()),
         transform: Transform::from_xyz(-3.5, 0.0, -3.5),
         ..Default::default()
-    });
+    }).insert(Player);
 }
