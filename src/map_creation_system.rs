@@ -35,7 +35,7 @@ fn setup(
             }
             commands.spawn_bundle(PbrBundle {
                 mesh: meshes.add(Mesh::from(shape::Cube { size: 0.95 })),
-                material: materials.add(Color::rgb(0.1, 0.2, 0.7).into()),
+                material: materials.add(Color::rgb(240.0/256.0, 206.0/256.0, 160.0/256.0).into()),
                 transform: Transform::from_xyz(x-5.5, 0.5, y-4.5),
                 ..Default::default()
             });
