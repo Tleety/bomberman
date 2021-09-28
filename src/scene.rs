@@ -2,9 +2,25 @@ use bevy::prelude::*;
 
 pub struct ScenePlugin;
 
+pub struct Map(pub std::vec::Vec<std::vec::Vec<i32>>);
+
 impl Plugin for ScenePlugin {
     fn build(&self, app: &mut AppBuilder) {
-        app.add_startup_system(setup.system());
+        let map = vec![
+        vec![1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        vec![1, 0, 0, 1, 1, 0, 1, 0, 0, 1],
+        vec![1, 0, 1, 1, 0, 1, 1, 1, 0, 1],
+        vec![1, 1, 1, 0, 1, 1, 0, 1, 1, 1],
+        vec![1, 0, 1, 1, 1, 1, 1, 0, 1, 1],
+        vec![1, 1, 0, 1, 1, 1, 1, 1, 0, 1],
+        vec![1, 1, 1, 0, 1, 1, 0, 1, 1, 1],
+        vec![1, 0, 1, 1, 1, 0, 1, 1, 0, 1],
+        vec![1, 0, 0, 1, 0, 1, 1, 0, 0, 1],
+        vec![1, 1, 1, 0, 1, 0, 1, 0, 1, 1]];
+
+        app
+        .insert_resource(Map(map))
+        .add_startup_system(setup.system());
     }
 }
 

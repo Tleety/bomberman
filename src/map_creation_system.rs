@@ -1,6 +1,8 @@
 use bevy::prelude::*;
+use crate::scene::Map;
 
 pub struct MapCreationPlugin;
+
 
 impl Plugin for MapCreationPlugin {
     fn build(&self, app: &mut AppBuilder) {
@@ -11,26 +13,16 @@ impl Plugin for MapCreationPlugin {
 fn setup(
     mut commands: Commands,
     mut meshes: ResMut<Assets<Mesh>>,
-    mut materials: ResMut<Assets<StandardMaterial>>
+    mut materials: ResMut<Assets<StandardMaterial>>,
+    map_res: Res<Map>
 ){
-    let map = vec![
-        vec![1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-        vec![1, 0, 0, 1, 1, 0, 1, 0, 0, 1],
-        vec![1, 0, 1, 1, 0, 1, 1, 1, 0, 1],
-        vec![1, 1, 1, 0, 1, 1, 0, 1, 1, 1],
-        vec![1, 0, 1, 1, 1, 1, 1, 0, 1, 1],
-        vec![1, 1, 0, 1, 1, 1, 1, 1, 0, 1],
-        vec![1, 1, 1, 0, 1, 1, 0, 1, 1, 1],
-        vec![1, 0, 1, 1, 1, 0, 1, 1, 0, 1],
-        vec![1, 0, 0, 1, 0, 1, 1, 0, 0, 1],
-        vec![1, 1, 1, 1, 1, 1, 1, 1, 1, 1]];
     
     let mut x = 0.0;
     let mut y = 0.0;
-    for vec in map {
+    for vec in &map_res.0 {
         for value in vec {
             x += 1.0;
-            if value == 0 {
+            if *value == 0 {
                 continue;
             }
             commands.spawn_bundle(PbrBundle {
